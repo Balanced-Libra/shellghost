@@ -65,6 +65,16 @@ export namespace Agent {
     }
     const agentPermission = await mergeAgentPermissions(defaultPermission, cfg.permission ?? {})
 
+    const godPermission: Info["permission"] = {
+      edit: "allow",
+      bash: {
+        "*": "allow",
+      },
+      webfetch: "allow",
+      doom_loop: "allow",
+      external_directory: "allow",
+    }
+
     const planPermission = await mergeAgentPermissions(
       {
         edit: "deny",
@@ -127,6 +137,15 @@ export namespace Agent {
         tools: {
           ...defaultTools,
         },
+        mode: "primary",
+        native: true,
+      },
+      god: {
+        name: "god",
+        description: "Full-access agent with no permission prompts.",
+        tools: { ...defaultTools },
+        options: {},
+        permission: godPermission,
         mode: "primary",
         native: true,
       },
