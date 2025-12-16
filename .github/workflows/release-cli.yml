@@ -1,0 +1,54 @@
+name: release-cli
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: ./.github/actions/setup-bun
+
+      - name: Build CLI binaries
+        run: |
+          cd packages/opencode
+          bun run build
+
+      - name: Package release assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd packages/opencode
+
+          mkdir -p dist/release
+
+          # linux
+          tar -czf dist/release/ghostshell-linux-x64.tar.gz -C dist/ghost-in-the-shell-linux-x64/bin ghostshell
+          tar -czf dist/release/ghostshell-linux-arm64.tar.gz -C dist/ghost-in-the-shell-linux-arm64/bin ghostshell
+
+          # macOS
+          tar -czf dist/release/ghostshell-darwin-x64.tar.gz -C dist/ghost-in-the-shell-darwin-x64/bin ghostshell
+          tar -czf dist/release/ghostshell-darwin-arm64.tar.gz -C dist/ghost-in-the-shell-darwin-arm64/bin ghostshell
+
+          # windows
+          (cd dist/ghost-in-the-shell-windows-x64/bin && zip -q -r ../../release/ghostshell-windows-x64.zip ghostshell.exe)
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            packages/opencode/dist/release/ghostshell-linux-x64.tar.gz
+            packages/opencode/dist/release/ghostshell-linux-arm64.tar.gz
+            packages/opencode/dist/release/ghostshell-darwin-x64.tar.gz
+            packages/opencode/dist/release/ghostshell-darwin-arm64.tar.gz
+            packages/opencode/dist/release/ghostshell-windows-x64.zip
+          generate_release_notes: true

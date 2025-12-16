@@ -23,6 +23,12 @@ cd GhostShell/packages/opencode
 bun install
 bun run build
 
+# Install prebuilt (macOS/Linux)
+curl -fsSL https://raw.githubusercontent.com/Balanced-Libra/GhostShell/main/install.sh | bash
+
+# Install prebuilt (Windows PowerShell)
+powershell -NoProfile -ExecutionPolicy Bypass -Command "iwr -useb https://raw.githubusercontent.com/Balanced-Libra/GhostShell/main/install.ps1 | iex"
+
 # Package managers (community maintained)
 npm i -g ghost-in-the-shell@latest        # or bun/pnpm/yarn
 scoop bucket add extras; scoop install extras/ghost  # Windows
@@ -47,8 +53,8 @@ The install script respects the following priority order for the installation pa
 
 ```bash
 # Examples
-GHOST_INSTALL_DIR=/usr/local/bin curl -fsSL https://ghostshell.ai/install | bash
-XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://ghostshell.ai/install | bash
+GHOST_INSTALL_DIR=/usr/local/bin curl -fsSL https://raw.githubusercontent.com/Balanced-Libra/GhostShell/main/install.sh | bash
+XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://raw.githubusercontent.com/Balanced-Libra/GhostShell/main/install.sh | bash
 ```
 
 ### Agents

@@ -22,6 +22,11 @@ if (envPath) {
   run(envPath)
 }
 
+const envGhostPath = process.env.GHOST_BIN_PATH
+if (envGhostPath) {
+  run(envGhostPath)
+}
+
 const scriptPath = fs.realpathSync(__filename)
 const scriptDir = path.dirname(scriptPath)
 
@@ -44,8 +49,8 @@ let arch = archMap[os.arch()]
 if (!arch) {
   arch = os.arch()
 }
-const base = "opencode-" + platform + "-" + arch
-const binary = platform === "windows" ? "opencode.exe" : "opencode"
+const base = "ghost-in-the-shell-" + platform + "-" + arch
+const binary = platform === "windows" ? "ghostshell.exe" : "ghostshell"
 
 function findBinary(startDir) {
   let current = startDir
@@ -74,7 +79,7 @@ function findBinary(startDir) {
 const resolved = findBinary(scriptDir)
 if (!resolved) {
   console.error(
-    'It seems that your package manager failed to install the right version of the opencode CLI for your platform. You can try manually installing the "' +
+    'It seems that your package manager failed to install the right version of the GhostShell CLI for your platform. You can try manually installing the "' +
       base +
       '" package',
   )
