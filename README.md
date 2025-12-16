@@ -1,37 +1,37 @@
 <p align="center">
-  <a href="https://opencode.ai">
+  <a href="https://github.com/Balanced-Libra/GhostShell">
     <picture>
-      <source srcset="packages/console/app/src/asset/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
-      <source srcset="packages/console/app/src/asset/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
-      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="OpenCode logo">
+      <img src="GHOSTSHELL.md" alt="GhostShell logo">
     </picture>
   </a>
 </p>
 <p align="center">GhostShell - The open source AI coding agent.</p>
 <p align="center">
-  <a href="https://opencode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
-  <a href="https://www.npmjs.com/package/opencode-ai"><img alt="npm" src="https://img.shields.io/npm/v/opencode-ai?style=flat-square" /></a>
-  <a href="https://github.com/sst/opencode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/sst/opencode/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/Balanced-Libra/GhostShell"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Balanced-Libra/GhostShell?style=flat-square" /></a>
+  <a href="https://github.com/Balanced-Libra/GhostShell/actions"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/Balanced-Libra/GhostShell/publish.yml?style=flat-square&branch=main" /></a>
 </p>
 
-[![OpenCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://opencode.ai)
+[![GhostShell Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://github.com/Balanced-Libra/GhostShell)
 
 ---
 
 ### Installation
 
 ```bash
-# YOLO
-curl -fsSL https://opencode.ai/install | bash
+# Build from source
+git clone https://github.com/Balanced-Libra/GhostShell.git
+cd GhostShell/packages/opencode
+bun install
+bun run build
 
-# Package managers
+# Package managers (community maintained)
 npm i -g ghost-in-the-shell@latest        # or bun/pnpm/yarn
 scoop bucket add extras; scoop install extras/ghost  # Windows
 choco install ghost             # Windows
 brew install ghost              # macOS and Linux
 paru -S ghost-bin               # Arch Linux
-mise use -g ubi:sst/ghost # Any OS
-nix run nixpkgs#ghost           # or github:sst/ghost for latest dev branch
+mise use -g ubi:Balanced-Libra/GhostShell # Any OS
+nix run nixpkgs#ghost           # or github:Balanced-Libra/GhostShell for latest dev branch
 ```
 
 > [!TIP]
@@ -48,13 +48,13 @@ The install script respects the following priority order for the installation pa
 
 ```bash
 # Examples
-GHOST_INSTALL_DIR=/usr/local/bin curl -fsSL https://opencode.ai/install | bash
-XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://opencode.ai/install | bash
+GHOST_INSTALL_DIR=/usr/local/bin curl -fsSL https://ghostshell.ai/install | bash
+XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://ghostshell.ai/install | bash
 ```
 
 ### Agents
 
-Ghost in the Shell includes two built-in agents you can switch between,
+GhostShell includes three built-in agents you can switch between,
 you can switch between these using the `Tab` key.
 
 - **build** - Default, full access agent for development work
@@ -62,15 +62,19 @@ you can switch between these using the `Tab` key.
   - Denies file edits by default
   - Asks permission before running bash commands
   - Ideal for exploring unfamiliar codebases or planning changes
+- **god** - Full access agent with no permission prompts
+  - Automatically allows all file edits
+  - Automatically allows all bash commands
+  - Ideal for trusted environments or rapid prototyping
 
 Also, included is a **general** subagent for complex searches and multi-step tasks.
 This is used internally and can be invoked using `@general` in messages.
 
-Learn more about [agents](https://opencode.ai/docs/agents).
+Learn more about [agents](https://github.com/Balanced-Libra/GhostShell/docs/agents).
 
 ### Documentation
 
-For more info on how to configure GhostShell [**head over to our docs**](https://opencode.ai/docs).
+For more info on how to configure GhostShell [**head over to our docs**](https://github.com/Balanced-Libra/GhostShell/docs).
 
 ### Contributing
 
@@ -87,15 +91,12 @@ If you are working on a project that's related to GhostShell and is using "ghost
 It's very similar to Claude Code in terms of capability. Here are the key differences:
 
 - 100% open source
-- Not coupled to any provider. Although we recommend the models we provide through [GhostShell Zen](https://opencode.ai/zen); GhostShell can be used with Claude, OpenAI, Google or even local models. As models evolve the gaps between them will close and pricing will drop so being provider-agnostic is important.
+- Not coupled to any provider. GhostShell can be used with Claude, OpenAI, Google or even local models. As models evolve the gaps between them will close and pricing will drop so being provider-agnostic is important.
 - Out of the box LSP support
-- A focus on TUI. GhostShell is built by neovim users and the creators of [terminal.shop](https://terminal.shop); we are going to push the limits of what's possible in the terminal.
+- A focus on TUI. GhostShell is built by terminal power users; we are going to push the limits of what's possible in the terminal.
 - A client/server architecture. This for example can allow GhostShell to run on your computer, while you can drive it remotely from a mobile app. Meaning that the TUI frontend is just one of the possible clients.
 
-#### What's the other repo?
-
-The other confusingly named repo has no relation to this one. You can [read the story behind it here](https://x.com/thdxr/status/1933561254481666466).
 
 ---
 
-**Join our community** [Discord](https://discord.gg/opencode) | [X.com](https://x.com/opencode)
+**Join our community** [GitHub](https://github.com/Balanced-Libra/GhostShell) | [Issues](https://github.com/Balanced-Libra/GhostShell/issues)
