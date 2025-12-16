@@ -12,6 +12,11 @@ import PROMPT_EXPLORE from "./prompt/explore.txt"
 import PROMPT_SUMMARY from "./prompt/summary.txt"
 import PROMPT_TITLE from "./prompt/title.txt"
 
+async function isGodmodeEnabled(): Promise<boolean> {
+  const config = await Config.get()
+  return config.experimental?.godmode === true
+}
+
 export namespace Agent {
   export const Info = z
     .object({
@@ -58,9 +63,9 @@ export namespace Agent {
       doom_loop: "ask",
       external_directory: "ask",
     }
-    const agentPermission = mergeAgentPermissions(defaultPermission, cfg.permission ?? {})
+    const agentPermission = await mergeAgentPermissions(defaultPermission, cfg.permission ?? {})
 
-    const planPermission = mergeAgentPermissions(
+    const planPermission = await mergeAgentPermissions(
       {
         edit: "deny",
         bash: {
@@ -242,7 +247,7 @@ export namespace Agent {
       if (maxSteps != undefined) item.maxSteps = maxSteps
 
       if (permission ?? cfg.permission) {
-        item.permission = mergeAgentPermissions(cfg.permission ?? {}, permission ?? {})
+        item.permission = await mergeAgentPermissions(cfg.permission ?? {}, permission ?? {})
       }
     }
     return result
@@ -295,7 +300,18 @@ export namespace Agent {
   }
 }
 
-function mergeAgentPermissions(basePermission: any, overridePermission: any): Agent.Info["permission"] {
+async function mergeAgentPermissions(basePermission: any, overridePermission: any): Promise<Agent.Info["permission"]> {
+  // If godmode is enabled, return all allow permissions
+  if (await isGodmodeEnabled()) {
+    return {
+      edit: "allow",
+      bash: { "*": "allow" },
+      webfetch: "allow", 
+      doom_loop: "allow",
+      external_directory: "allow",
+    }
+  }
+
   if (typeof basePermission.bash === "string") {
     basePermission.bash = {
       "*": basePermission.bash,

@@ -792,6 +792,10 @@ export namespace Config {
             .optional()
             .describe("Tools that should only be available to primary agents."),
           continue_loop_on_deny: z.boolean().optional().describe("Continue the agent loop when a tool call is denied"),
+          godmode: z
+            .boolean()
+            .optional()
+            .describe("Enable godmode - bypass all permission prompts and auto-approve all actions"),
         })
         .optional(),
     })

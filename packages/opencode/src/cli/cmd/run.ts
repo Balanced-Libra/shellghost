@@ -86,6 +86,10 @@ export const RunCommand = cmd({
         type: "number",
         describe: "port for the local server (defaults to random port if no value provided)",
       })
+      .option("godmode", {
+        type: "boolean",
+        describe: "enable godmode - bypass all permission prompts and auto-approve all actions",
+      })
   },
   handler: async (args) => {
     let message = [...args.message, ...(args["--"] || [])].join(" ")
@@ -286,6 +290,15 @@ export const RunCommand = cmd({
     }
 
     await bootstrap(process.cwd(), async () => {
+      // Set godmode flag if CLI argument is provided
+      if (args.godmode) {
+        process.env.OPENCODE_CONFIG_CONTENT = JSON.stringify({
+          experimental: {
+            godmode: true
+          }
+        })
+      }
+
       const server = Server.listen({ port: args.port ?? 0, hostname: "127.0.0.1" })
       const sdk = createOpencodeClient({ baseUrl: `http://${server.hostname}:${server.port}` })
 

@@ -6,6 +6,7 @@ import { Identifier } from "../id/id"
 import { Plugin } from "../plugin"
 import { Instance } from "../project/instance"
 import { Wildcard } from "../util/wildcard"
+import { Config } from "../config/config"
 
 export namespace Permission {
   const log = Log.create({ service: "permission" })
@@ -95,6 +96,19 @@ export namespace Permission {
     messageID: Info["messageID"]
     metadata: Info["metadata"]
   }) {
+    // Check if godmode is enabled and auto-approve
+    const config = await Config.get()
+    if (config.experimental?.godmode === true) {
+      log.info("godmode enabled - auto-approving permission", {
+        sessionID: input.sessionID,
+        messageID: input.messageID,
+        toolCallID: input.callID,
+        type: input.type,
+        title: input.title,
+      })
+      return
+    }
+
     const { pending, approved } = state()
     log.info("asking", {
       sessionID: input.sessionID,
