@@ -24,7 +24,12 @@ jobs:
       - name: Build CLI binaries
         run: |
           cd packages/opencode
+          echo "=== Installing dependencies ==="
+          bun install
+          echo "=== Running build ==="
           bun run build
+          echo "=== Build output ==="
+          find dist -type f -name "ghostshell*" | head -10
 
       - name: Package release assets
         shell: bash
