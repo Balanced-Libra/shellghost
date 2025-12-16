@@ -11,7 +11,6 @@
   <a href="https://github.com/Balanced-Libra/GhostShell/actions"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/Balanced-Libra/GhostShell/publish.yml?style=flat-square&branch=main" /></a>
 </p>
 
-[![GhostShell Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://github.com/Balanced-Libra/GhostShell)
 
 ---
 
