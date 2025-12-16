@@ -26,8 +26,8 @@ jobs:
           cd packages/opencode
           echo "=== Installing dependencies ==="
           bun install
-          echo "=== Running build ==="
-          bun run build
+          echo "=== Running build (standard targets only) ==="
+          bun run build --single || { echo "Build failed"; exit 1; }
           echo "=== Build output ==="
           find dist -type f -name "ghostshell*" | head -10
 
