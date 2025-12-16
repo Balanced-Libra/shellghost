@@ -18,6 +18,9 @@ jobs:
       - name: Setup Bun
         uses: ./.github/actions/setup-bun
 
+      - name: Install zip (Ubuntu)
+        run: sudo apt-get update && sudo apt-get install -y zip
+
       - name: Build CLI binaries
         run: |
           cd packages/opencode
@@ -29,18 +32,30 @@ jobs:
           set -euo pipefail
           cd packages/opencode
 
+          echo "=== Listing built binaries ==="
+          ls -la dist/ || echo "dist/ missing"
+          find dist/ -name "ghostshell*" -type f | grep -E -v "(baseline|musl)" | head -10 || echo "No ghostshell binaries found"
+
           mkdir -p dist/release
 
           # linux
+          echo "Packaging Linux x64..."
           tar -czf dist/release/ghostshell-linux-x64.tar.gz -C dist/ghost-in-the-shell-linux-x64/bin ghostshell
+          echo "Packaging Linux arm64..."
           tar -czf dist/release/ghostshell-linux-arm64.tar.gz -C dist/ghost-in-the-shell-linux-arm64/bin ghostshell
 
           # macOS
+          echo "Packaging macOS x64..."
           tar -czf dist/release/ghostshell-darwin-x64.tar.gz -C dist/ghost-in-the-shell-darwin-x64/bin ghostshell
+          echo "Packaging macOS arm64..."
           tar -czf dist/release/ghostshell-darwin-arm64.tar.gz -C dist/ghost-in-the-shell-darwin-arm64/bin ghostshell
 
           # windows
+          echo "Packaging Windows x64..."
           (cd dist/ghost-in-the-shell-windows-x64/bin && zip -q -r ../../release/ghostshell-windows-x64.zip ghostshell.exe)
+
+          echo "=== Release assets ==="
+          ls -la dist/release/
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
