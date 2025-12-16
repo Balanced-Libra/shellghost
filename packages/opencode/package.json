@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/package.json",
   "version": "1.0.162",
   "name": "ghost-in-the-shell",
-  "description": "AI-powered development tool - Ghost in the Shell",
+  "description": "AI-powered development tool - GhostShell",
   "private": true,
   "scripts": {
     "typecheck": "tsgo --noEmit",

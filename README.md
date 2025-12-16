@@ -7,7 +7,7 @@
     </picture>
   </a>
 </p>
-<p align="center">Ghost in the Shell - The open source AI coding agent.</p>
+<p align="center">GhostShell - The open source AI coding agent.</p>
 <p align="center">
   <a href="https://opencode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
   <a href="https://www.npmjs.com/package/opencode-ai"><img alt="npm" src="https://img.shields.io/npm/v/opencode-ai?style=flat-square" /></a>
@@ -70,15 +70,15 @@ Learn more about [agents](https://opencode.ai/docs/agents).
 
 ### Documentation
 
-For more info on how to configure Ghost in the Shell [**head over to our docs**](https://opencode.ai/docs).
+For more info on how to configure GhostShell [**head over to our docs**](https://opencode.ai/docs).
 
 ### Contributing
 
-If you're interested in contributing to Ghost in the Shell, please read our [contributing docs](./CONTRIBUTING.md) before submitting a pull request.
+If you're interested in contributing to GhostShell, please read our [contributing docs](./CONTRIBUTING.md) before submitting a pull request.
 
-### Building on Ghost in the Shell
+### Building on GhostShell
 
-If you are working on a project that's related to Ghost in the Shell and is using "ghost" as a part of its name; for example, "ghost-dashboard" or "ghost-mobile", please add a note to your README to clarify that it is not built by the Ghost in the Shell team and is not affiliated with us in anyway.
+If you are working on a project that's related to GhostShell and is using "ghost" as a part of its name; for example, "ghost-dashboard" or "ghost-mobile", please add a note to your README to clarify that it is not built by the GhostShell team and is not affiliated with us in anyway.
 
 ### FAQ
 
@@ -87,10 +87,10 @@ If you are working on a project that's related to Ghost in the Shell and is usin
 It's very similar to Claude Code in terms of capability. Here are the key differences:
 
 - 100% open source
-- Not coupled to any provider. Although we recommend the models we provide through [Ghost in the Shell Zen](https://opencode.ai/zen); Ghost in the Shell can be used with Claude, OpenAI, Google or even local models. As models evolve the gaps between them will close and pricing will drop so being provider-agnostic is important.
+- Not coupled to any provider. Although we recommend the models we provide through [GhostShell Zen](https://opencode.ai/zen); GhostShell can be used with Claude, OpenAI, Google or even local models. As models evolve the gaps between them will close and pricing will drop so being provider-agnostic is important.
 - Out of the box LSP support
-- A focus on TUI. Ghost in the Shell is built by neovim users and the creators of [terminal.shop](https://terminal.shop); we are going to push the limits of what's possible in the terminal.
-- A client/server architecture. This for example can allow Ghost in the Shell to run on your computer, while you can drive it remotely from a mobile app. Meaning that the TUI frontend is just one of the possible clients.
+- A focus on TUI. GhostShell is built by neovim users and the creators of [terminal.shop](https://terminal.shop); we are going to push the limits of what's possible in the terminal.
+- A client/server architecture. This for example can allow GhostShell to run on your computer, while you can drive it remotely from a mobile app. Meaning that the TUI frontend is just one of the possible clients.
 
 #### What's the other repo?
 
