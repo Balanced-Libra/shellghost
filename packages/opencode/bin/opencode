@@ -50,7 +50,7 @@ if (!arch) {
   arch = os.arch()
 }
 const base = "ghost-in-the-shell-" + platform + "-" + arch
-const binary = platform === "windows" ? "ghostshell.exe" : "ghostshell"
+const binary = platform === "windows" ? "shellghost.exe" : "shellghost"
 
 function findBinary(startDir) {
   let current = startDir
@@ -79,7 +79,7 @@ function findBinary(startDir) {
 const resolved = findBinary(scriptDir)
 if (!resolved) {
   console.error(
-    'It seems that your package manager failed to install the right version of the GhostShell CLI for your platform. You can try manually installing the "' +
+    'It seems that your package manager failed to install the right version of the ShellGhost CLI for your platform. You can try manually installing the "' +
       base +
       '" package',
   )

@@ -175,20 +175,20 @@ function App() {
   // Update terminal window title based on current route and session
   createEffect(() => {
     if (route.data.type === "home") {
-      renderer.setTerminalTitle("GhostShell")
+      renderer.setTerminalTitle("ShellGhost")
       return
     }
 
     if (route.data.type === "session") {
       const session = sync.session.get(route.data.sessionID)
       if (!session || SessionApi.isDefaultTitle(session.title)) {
-        renderer.setTerminalTitle("GhostShell")
+        renderer.setTerminalTitle("ShellGhost")
         return
       }
 
       // Truncate title to 40 chars max
       const title = session.title.length > 40 ? session.title.slice(0, 37) + "..." : session.title
-      renderer.setTerminalTitle(`GhostShell | ${title}`)
+      renderer.setTerminalTitle(`ShellGhost | ${title}`)
     }
   })
 
@@ -453,7 +453,7 @@ function App() {
         DialogAlert.show(
           dialog,
           "Warning",
-          "While openrouter is a convenient way to access LLMs your request will often be routed to subpar providers that do not work well in our testing.\n\nFor reliable access to models check out GhostShell Zen\nhttps://opencode.ai/zen",
+          "While openrouter is a convenient way to access LLMs your request will often be routed to subpar providers that do not work well in our testing.\n\nFor reliable access to models check out ShellGhost Zen\nhttps://opencode.ai/zen",
         ).then(() => kv.set("openrouter_warning", true))
       })
     }
@@ -508,7 +508,7 @@ function App() {
     toast.show({
       variant: "success",
       title: "Update Complete",
-      message: `GhostShell updated to v${evt.properties.version}`,
+      message: `ShellGhost updated to v${evt.properties.version}`,
       duration: 5000,
     })
   })
@@ -517,7 +517,7 @@ function App() {
     toast.show({
       variant: "info",
       title: "Update Available",
-      message: `GhostShell v${evt.properties.version} is available. Run 'ghost upgrade' to update manually.`,
+      message: `ShellGhost v${evt.properties.version} is available. Run 'ghost upgrade' to update manually.`,
       duration: 10000,
     })
   })

@@ -3,7 +3,7 @@ import { For } from "solid-js"
 import { useTheme } from "@tui/context/theme"
 
 const LOGO = [
-  `                            G H O S T S H E L L`,
+  `                            S H E L L G H O S T`,
   ``,
   `   ██████╗ ██╗  ██╗ ██████╗ ███████╗████████╗███████╗██╗  ██╗███████╗██╗     ██╗`,
   `  ██╔════╝ ██║  ██║██╔═══██╗██╔════╝╚══██╔══╝██╔════╝██║  ██║██╔════╝██║     ██║`,

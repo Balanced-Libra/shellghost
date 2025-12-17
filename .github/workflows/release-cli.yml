@@ -45,19 +45,19 @@ jobs:
 
           # linux
           echo "Packaging Linux x64..."
-          tar -czf dist/release/ghostshell-linux-x64.tar.gz -C dist/ghost-in-the-shell-linux-x64/bin ghostshell
+          tar -czf dist/release/shellghost-linux-x64.tar.gz -C dist/ghost-in-the-shell-linux-x64/bin shellghost
           echo "Packaging Linux arm64..."
-          tar -czf dist/release/ghostshell-linux-arm64.tar.gz -C dist/ghost-in-the-shell-linux-arm64/bin ghostshell
+          tar -czf dist/release/shellghost-linux-arm64.tar.gz -C dist/ghost-in-the-shell-linux-arm64/bin shellghost
 
           # macOS
           echo "Packaging macOS x64..."
-          tar -czf dist/release/ghostshell-darwin-x64.tar.gz -C dist/ghost-in-the-shell-darwin-x64/bin ghostshell
+          tar -czf dist/release/shellghost-darwin-x64.tar.gz -C dist/ghost-in-the-shell-darwin-x64/bin shellghost
           echo "Packaging macOS arm64..."
-          tar -czf dist/release/ghostshell-darwin-arm64.tar.gz -C dist/ghost-in-the-shell-darwin-arm64/bin ghostshell
+          tar -czf dist/release/shellghost-darwin-arm64.tar.gz -C dist/ghost-in-the-shell-darwin-arm64/bin shellghost
 
           # windows
           echo "Packaging Windows x64..."
-          (cd dist/ghost-in-the-shell-windows-x64/bin && zip -q -r ../../release/ghostshell-windows-x64.zip ghostshell.exe)
+          (cd dist/ghost-in-the-shell-windows-x64/bin && zip -q -r ../../release/shellghost-windows-x64.zip shellghost.exe)
 
           echo "=== Release assets ==="
           ls -la dist/release/
@@ -66,9 +66,9 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            packages/opencode/dist/release/ghostshell-linux-x64.tar.gz
-            packages/opencode/dist/release/ghostshell-linux-arm64.tar.gz
-            packages/opencode/dist/release/ghostshell-darwin-x64.tar.gz
-            packages/opencode/dist/release/ghostshell-darwin-arm64.tar.gz
-            packages/opencode/dist/release/ghostshell-windows-x64.zip
+            packages/opencode/dist/release/shellghost-linux-x64.tar.gz
+            packages/opencode/dist/release/shellghost-linux-arm64.tar.gz
+            packages/opencode/dist/release/shellghost-darwin-x64.tar.gz
+            packages/opencode/dist/release/shellghost-darwin-arm64.tar.gz
+            packages/opencode/dist/release/shellghost-windows-x64.zip
           generate_release_notes: true

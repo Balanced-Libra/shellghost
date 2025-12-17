@@ -1,7 +1,7 @@
-# GhostShell
+# ShellGhost
 
 ```
-      G H O S T S H E L L
+                            S H E L L G H O S T
 
    ██████╗ ██╗  ██╗ ██████╗ ███████╗████████╗███████╗██╗  ██╗███████╗██╗     ██╗
   ██╔════╝ ██║  ██║██╔═══██╗██╔════╝╚══██╔══╝██╔════╝██║  ██║██╔════╝██║     ██║
@@ -13,7 +13,7 @@
                  "Hauntingly capable. Unreasonably authorized."
 ```
 
-GhostShell - AI-powered terminal interface
+ShellGhost - AI-powered terminal interface
 
 ## Quick Start
 - Binary location: `packages/opencode/dist/ghost-in-the-shell-linux-arm64/bin/opencode`

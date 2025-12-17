@@ -50,7 +50,7 @@ function detectPlatformAndArch() {
 function findBinary() {
   const { platform, arch } = detectPlatformAndArch()
   const packageName = `ghost-in-the-shell-${platform}-${arch}`
-  const binaryName = platform === "windows" ? "ghostshell.exe" : "ghostshell"
+  const binaryName = platform === "windows" ? "shellghost.exe" : "shellghost"
 
   try {
     // Use require.resolve to find the package

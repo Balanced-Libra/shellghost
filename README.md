@@ -1,11 +1,11 @@
 <p align="center">
   <a href="https://github.com/Balanced-Libra/GhostShell">
     <picture>
-      <img src="GHOSTSHELL.md" alt="GhostShell logo">
+      <img src="GHOSTSHELL.md" alt="ShellGhost logo">
     </picture>
   </a>
 </p>
-<p align="center">GhostShell - The open source AI coding agent.</p>
+<p align="center">ShellGhost - The open source AI coding agent.</p>
 <p align="center">
   <a href="https://github.com/Balanced-Libra/GhostShell"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Balanced-Libra/GhostShell?style=flat-square" /></a>
   <a href="https://github.com/Balanced-Libra/GhostShell/actions"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/Balanced-Libra/GhostShell/publish.yml?style=flat-square&branch=main" /></a>
@@ -59,7 +59,7 @@ XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://raw.githubusercontent.com/Balanc
 
 ### Agents
 
-GhostShell includes three built-in agents you can switch between,
+ShellGhost includes three built-in agents you can switch between,
 you can switch between these using the `Tab` key.
 
 - **build** - Default, full access agent for development work
@@ -79,15 +79,15 @@ Learn more about [agents](https://github.com/Balanced-Libra/GhostShell/docs/agen
 
 ### Documentation
 
-For more info on how to configure GhostShell [**head over to our docs**](https://github.com/Balanced-Libra/GhostShell/docs).
+For more info on how to configure ShellGhost [**head over to our docs**](https://github.com/Balanced-Libra/GhostShell/docs).
 
 ### Contributing
 
-If you're interested in contributing to GhostShell, please read our [contributing docs](./CONTRIBUTING.md) before submitting a pull request.
+If you're interested in contributing to ShellGhost, please read our [contributing docs](./CONTRIBUTING.md) before submitting a pull request.
 
-### Building on GhostShell
+### Building on ShellGhost
 
-If you are working on a project that's related to GhostShell and is using "ghost" as a part of its name; for example, "ghost-dashboard" or "ghost-mobile", please add a note to your README to clarify that it is not built by the GhostShell team and is not affiliated with us in anyway.
+If you are working on a project that's related to ShellGhost and is using "ghost" as a part of its name; for example, "ghost-dashboard" or "ghost-mobile", please add a note to your README to clarify that it is not built by the ShellGhost team and is not affiliated with us in anyway.
 
 ### FAQ
 
@@ -96,10 +96,10 @@ If you are working on a project that's related to GhostShell and is using "ghost
 It's very similar to Claude Code in terms of capability. Here are the key differences:
 
 - 100% open source
-- Not coupled to any provider. GhostShell can be used with Claude, OpenAI, Google or even local models. As models evolve the gaps between them will close and pricing will drop so being provider-agnostic is important.
+- Not coupled to any provider. ShellGhost can be used with Claude, OpenAI, Google or even local models. As models evolve the gaps between them will close and pricing will drop so being provider-agnostic is important.
 - Out of the box LSP support
-- A focus on TUI. GhostShell is built by terminal power users; we are going to push the limits of what's possible in the terminal.
-- A client/server architecture. This for example can allow GhostShell to run on your computer, while you can drive it remotely from a mobile app. Meaning that the TUI frontend is just one of the possible clients.
+- A focus on TUI. ShellGhost is built by terminal power users; we are going to push the limits of what's possible in the terminal.
+- A client/server architecture. This for example can allow ShellGhost to run on your computer, while you can drive it remotely from a mobile app. Meaning that the TUI frontend is just one of the possible clients.
 
 
 ---

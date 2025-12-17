@@ -273,7 +273,7 @@ export function Sidebar(props: { sessionID: string }) {
                     ✕
                   </text>
                 </box>
-                <text fg={theme.textMuted}>GhostShell includes free models so you can start immediately.</text>
+                <text fg={theme.textMuted}>ShellGhost includes free models so you can start immediately.</text>
                 <text fg={theme.textMuted}>
                   Connect from 75+ providers to use other models, including Claude, GPT, Gemini etc
                 </text>

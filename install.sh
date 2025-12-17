@@ -43,7 +43,7 @@ TMP_DIR="$(mktemp -d)"
 cleanup() { rm -rf "${TMP_DIR}"; }
 trap cleanup EXIT
 
-ASSET="ghostshell-${OS}-${ARCH}.tar.gz"
+ASSET="shellghost-${OS}-${ARCH}.tar.gz"
 
 API_URL="https://api.github.com/repos/${REPO}/releases/latest"
 
@@ -72,11 +72,11 @@ else
   wget -qO "${ARCHIVE_PATH}" "${DOWNLOAD_URL}"
 fi
 
-BIN_PATH="${TMP_DIR}/ghostshell"
+BIN_PATH="${TMP_DIR}/shellghost"
 tar -xzf "${ARCHIVE_PATH}" -C "${TMP_DIR}"
 
 if [ ! -f "${BIN_PATH}" ]; then
-  echo "Downloaded archive did not contain expected binary 'ghostshell'" >&2
+  echo "Downloaded archive did not contain expected binary 'shellghost'" >&2
   exit 1
 fi
 
