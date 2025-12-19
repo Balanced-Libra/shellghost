@@ -9,7 +9,7 @@ elseif ($Arch -eq 'ARM64') { $Arch = 'arm64' }
 else { throw "Unsupported architecture: $Arch" }
 
 $Os = 'windows'
-$Asset = "shellghost-$Os-$Arch.zip"
+$Asset = "shellghost-$Os-$Arch.tar.gz"
 
 $InstallDir = if ($env:GHOST_INSTALL_DIR) { $env:GHOST_INSTALL_DIR } else { Join-Path $env:LOCALAPPDATA 'ShellGhost\bin' }
 New-Item -ItemType Directory -Force -Path $InstallDir | Out-Null
@@ -27,7 +27,7 @@ Invoke-WebRequest -Uri $AssetObj.browser_download_url -OutFile $ZipPath
 
 $ExtractDir = Join-Path $env:TEMP "shellghost-extract-$([guid]::NewGuid().ToString())"
 New-Item -ItemType Directory -Force -Path $ExtractDir | Out-Null
-Expand-Archive -Path $ZipPath -DestinationPath $ExtractDir -Force
+tar -xzf $ZipPath -C $ExtractDir
 
 $Exe = Join-Path $ExtractDir 'shellghost.exe'
 if (-not (Test-Path $Exe)) {
