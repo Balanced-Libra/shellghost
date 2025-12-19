@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
 
-$Repo = 'Balanced-Libra/GhostShell'
+$Repo = 'GhostEnvoy/Shell-Ghost'
 $BinName = 'ghost.exe'
 
 $Arch = $env:PROCESSOR_ARCHITECTURE

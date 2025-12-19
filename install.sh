@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO="Balanced-Libra/Shell-Ghost"
+REPO="GhostEnvoy/Shell-Ghost"
 BIN_NAME="ghost"
 
 OS="$(uname -s | tr '[:upper:]' '[:lower:]')"
