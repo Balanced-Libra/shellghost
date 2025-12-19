@@ -1,14 +1,14 @@
 <p align="center">
-  <a href="https://github.com/Balanced-Libra/GhostShell">
+  <a href="https://github.com/Balanced-Libra/Shell-Ghost">
     <picture>
-      <img src="GHOSTSHELL.md" alt="ShellGhost logo">
+      <img src="packages/opencode/src/cli/cmd/tui/component/logo.tsx" alt="ShellGhost logo">
     </picture>
   </a>
 </p>
 <p align="center">ShellGhost - The open source AI coding agent.</p>
 <p align="center">
-  <a href="https://github.com/Balanced-Libra/GhostShell"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Balanced-Libra/GhostShell?style=flat-square" /></a>
-  <a href="https://github.com/Balanced-Libra/GhostShell/actions"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/Balanced-Libra/GhostShell/publish.yml?style=flat-square&branch=main" /></a>
+  <a href="https://github.com/Balanced-Libra/Shell-Ghost"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Balanced-Libra/Shell-Ghost?style=flat-square" /></a>
+  <a href="https://github.com/Balanced-Libra/Shell-Ghost/actions"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/Balanced-Libra/Shell-Ghost/publish.yml?style=flat-square&branch=main" /></a>
 </p>
 
 
@@ -18,16 +18,16 @@
 
 ```bash
 # Build from source
-git clone https://github.com/Balanced-Libra/GhostShell.git
-cd GhostShell/packages/opencode
+git clone https://github.com/Balanced-Libra/Shell-Ghost.git
+cd Shell-Ghost/packages/opencode
 bun install
 bun run build
 
 # Install prebuilt (macOS/Linux)
-curl -fsSL https://raw.githubusercontent.com/Balanced-Libra/GhostShell/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Balanced-Libra/Shell-Ghost/main/install.sh | bash
 
 # Install prebuilt (Windows PowerShell)
-powershell -NoProfile -ExecutionPolicy Bypass -Command "iwr -useb https://raw.githubusercontent.com/Balanced-Libra/GhostShell/main/install.ps1 | iex"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "iwr -useb https://raw.githubusercontent.com/Balanced-Libra/Shell-Ghost/main/install.ps1 | iex"
 
 # Package managers (community maintained)
 npm i -g ghost-in-the-shell@latest        # or bun/pnpm/yarn
@@ -53,8 +53,8 @@ The install script respects the following priority order for the installation pa
 
 ```bash
 # Examples
-GHOST_INSTALL_DIR=/usr/local/bin curl -fsSL https://raw.githubusercontent.com/Balanced-Libra/GhostShell/main/install.sh | bash
-XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://raw.githubusercontent.com/Balanced-Libra/GhostShell/main/install.sh | bash
+GHOST_INSTALL_DIR=/usr/local/bin curl -fsSL https://raw.githubusercontent.com/Balanced-Libra/Shell-Ghost/main/install.sh | bash
+XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://raw.githubusercontent.com/Balanced-Libra/Shell-Ghost/main/install.sh | bash
 ```
 
 ### Agents
@@ -75,11 +75,11 @@ you can switch between these using the `Tab` key.
 Also, included is a **general** subagent for complex searches and multi-step tasks.
 This is used internally and can be invoked using `@general` in messages.
 
-Learn more about [agents](https://github.com/Balanced-Libra/GhostShell/docs/agents).
+Learn more about [agents](https://github.com/Balanced-Libra/Shell-Ghost/docs/agents).
 
 ### Documentation
 
-For more info on how to configure ShellGhost [**head over to our docs**](https://github.com/Balanced-Libra/GhostShell/docs).
+For more info on how to configure ShellGhost [**head over to our docs**](https://github.com/Balanced-Libra/Shell-Ghost/docs).
 
 ### Contributing
 
@@ -104,4 +104,4 @@ It's very similar to Claude Code in terms of capability. Here are the key differ
 
 ---
 
-**Join our community** [GitHub](https://github.com/Balanced-Libra/GhostShell) | [Issues](https://github.com/Balanced-Libra/GhostShell/issues)
+**Join our community** [GitHub](https://github.com/Balanced-Libra/Shell-Ghost) | [Issues](https://github.com/Balanced-Libra/Shell-Ghost/issues)
