@@ -960,7 +960,7 @@ export namespace SessionPrompt {
   function insertReminders(input: { messages: MessageV2.WithParts[]; agent: Agent.Info }) {
     const userMessage = input.messages.findLast((msg) => msg.info.role === "user")
     if (!userMessage) return input.messages
-    if (input.agent.name === "plan") {
+    if (input.agent.name === "ask") {
       userMessage.parts.push({
         id: Identifier.ascending("part"),
         messageID: userMessage.info.id,
@@ -971,8 +971,8 @@ export namespace SessionPrompt {
         synthetic: true,
       })
     }
-    const wasPlan = input.messages.some((msg) => msg.info.role === "assistant" && msg.info.agent === "plan")
-    if (wasPlan && input.agent.name === "build") {
+    const wasAsk = input.messages.some((msg) => msg.info.role === "assistant" && msg.info.agent === "ask")
+    if (wasAsk && input.agent.name === "build") {
       userMessage.parts.push({
         id: Identifier.ascending("part"),
         messageID: userMessage.info.id,

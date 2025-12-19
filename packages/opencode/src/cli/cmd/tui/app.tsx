@@ -399,7 +399,7 @@ function App() {
       title: "Open docs",
       value: "docs.open",
       onSelect: () => {
-        open("https://opencode.ai/docs").catch(() => {})
+        open("https://github.com/Balanced-Libra/Shell-Ghost/tree/main/docs").catch(() => {})
         dialog.clear()
       },
       category: "System",

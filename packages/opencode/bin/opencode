@@ -52,6 +52,15 @@ if (!arch) {
 const base = "ghost-in-the-shell-" + platform + "-" + arch
 const binary = platform === "windows" ? "shellghost.exe" : "shellghost"
 
+function findBinaryInDist(startDir) {
+  const candidate = path.join(startDir, "..", "dist", base, "bin", binary);
+  if (fs.existsSync(candidate)) {
+    run(candidate);
+  }
+}
+
+findBinaryInDist(scriptDir);
+
 function findBinary(startDir) {
   let current = startDir
   for (;;) {

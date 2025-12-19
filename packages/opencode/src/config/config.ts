@@ -622,7 +622,7 @@ export namespace Config {
       command: z
         .record(z.string(), Command)
         .optional()
-        .describe("Command configuration, see https://opencode.ai/docs/commands"),
+        .describe("Command configuration, see https://github.com/Balanced-Libra/Shell-Ghost/tree/main/docs/commands"),
       watcher: z
         .object({
           ignore: z.array(z.string()).optional(),
@@ -663,7 +663,7 @@ export namespace Config {
       mode: z
         .object({
           build: Agent.optional(),
-          plan: Agent.optional(),
+          ask: Agent.optional(),
         })
         .catchall(Agent)
         .optional()
@@ -671,7 +671,7 @@ export namespace Config {
       agent: z
         .object({
           // primary
-          plan: Agent.optional(),
+          ask: Agent.optional(),
           build: Agent.optional(),
           // subagent
           general: Agent.optional(),
@@ -683,7 +683,7 @@ export namespace Config {
         })
         .catchall(Agent)
         .optional()
-        .describe("Agent configuration, see https://opencode.ai/docs/agent"),
+        .describe("Agent configuration, see https://github.com/Balanced-Libra/Shell-Ghost/tree/main/docs/agent"),
       provider: z
         .record(z.string(), Provider)
         .optional()

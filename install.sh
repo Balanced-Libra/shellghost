@@ -43,7 +43,7 @@ TMP_DIR="$(mktemp -d)"
 cleanup() { rm -rf "${TMP_DIR}"; }
 trap cleanup EXIT
 
-ASSET="shellghost-${OS}-${ARCH}.tar.gz"
+ASSET="ghost-in-the-shell-${OS}-${ARCH}.tar.gz"
 
 API_URL="https://api.github.com/repos/${REPO}/releases/latest"
 
@@ -72,7 +72,7 @@ else
   wget -qO "${ARCHIVE_PATH}" "${DOWNLOAD_URL}"
 fi
 
-BIN_PATH="${TMP_DIR}/shellghost"
+BIN_PATH="${TMP_DIR}/bin/shellghost"
 tar -xzf "${ARCHIVE_PATH}" -C "${TMP_DIR}"
 
 if [ ! -f "${BIN_PATH}" ]; then

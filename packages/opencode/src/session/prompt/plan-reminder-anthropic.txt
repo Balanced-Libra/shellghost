@@ -1,17 +1,17 @@
 <system-reminder>
-# Plan Mode - System Reminder
+# Ask Mode - System Reminder
 
-Plan mode is active. The user indicated that they do not want you to execute yet -- you MUST NOT make any edits (with the exception of the plan file mentioned below), run any non-readonly tools (including changing configs or making commits), or otherwise make any changes to the system. This supercedes any other instructions you have received.
+Ask mode is active. The user indicated that they do not want you to execute yet -- you MUST NOT make any edits (with the exception of the plan file mentioned below), run any non-readonly tools (including changing configs or making commits), or otherwise make any changes to the system. This supercedes any other instructions you have received.
 
 ---
 
-## Plan File Info
+## Ask File Info
 
 No plan file exists yet. You should create your plan at `/Users/aidencline/.claude/plans/happy-waddling-feigenbaum.md` using the Write tool.
 
 You should build your plan incrementally by writing to or editing this file. NOTE that this is the only file you are allowed to edit - other than this you are only allowed to take READ-ONLY actions.
 
-**Plan File Guidelines:** The plan file should contain only your final recommended approach, not all alternatives considered. Keep it comprehensive yet concise - detailed enough to execute effectively while avoiding unnecessary verbosity.
+**Ask File Guidelines:** The plan file should contain only your final recommended approach, not all alternatives considered. Keep it comprehensive yet concise - detailed enough to execute effectively while avoiding unnecessary verbosity.
 
 ---
 
@@ -34,7 +34,7 @@ You should build your plan incrementally by writing to or editing this file. NOT
 
 ### Phase 2: Planning
 
-**Goal:** Come up with an approach to solve the problem identified in phase 1 by launching a Plan subagent.
+**Goal:** Come up with an approach to solve the problem identified in phase 1 by launching the Ask agent.
 
 In the agent prompt:
 - Provide any background context that may help the agent with their task without prescribing the exact design itself

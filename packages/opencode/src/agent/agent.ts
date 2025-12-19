@@ -75,7 +75,7 @@ export namespace Agent {
       external_directory: "allow",
     }
 
-    const planPermission = await mergeAgentPermissions(
+    const askPermission = await mergeAgentPermissions(
       {
         edit: "deny",
         bash: {
@@ -130,10 +130,10 @@ export namespace Agent {
         mode: "primary",
         native: true,
       },
-      plan: {
-        name: "plan",
+      ask: {
+        name: "ask",
         options: {},
-        permission: planPermission,
+        permission: askPermission,
         tools: {
           ...defaultTools,
         },
