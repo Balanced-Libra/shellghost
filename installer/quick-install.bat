@@ -4,14 +4,16 @@ setlocal enabledelayedexpansion
 echo Installing GhostShell...
 
 set "BIN=%USERPROFILE%\.ghost\bin"
-set "EXE_URL=https://github.com/GhostEnvoy/Shell-Ghost/releases/download/v0.1.3/ghost-in-the-shell-windows-x64.exe"
+set "EXE_URL=https://github.com/GhostEnvoy/Shell-Ghost/releases/download/v0.1.3/ghost-in-the-shell-windows-x64.tar.gz"
 
 :: Create directory
 if not exist "%BIN%" mkdir "%BIN%"
 
-:: Download the binary
+:: Download and extract binary
 echo Downloading from: %EXE_URL%
-powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri '%EXE_URL%' -OutFile '%BIN%\ghost.exe'" 2>nul
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri '%EXE_URL%' -OutFile '%BIN%\temp.tar.gz'" 2>nul
+tar -xzf "%BIN%\temp.tar.gz" -C "%BIN%" 2>nul
+del "%BIN%\temp.tar.gz" 2>nul
 
 :: Check if download worked
 if not exist "%BIN%\ghost.exe" (
