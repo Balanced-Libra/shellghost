@@ -10,8 +10,7 @@ echo Installing GhostShell to %BIN%...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "New-Item -Force -ItemType Directory -Path '%BIN%' | Out-Null;" ^
   "Invoke-WebRequest -UseBasicParsing '%URL%' -OutFile '%ZIP%';" ^
-  "Add-Type -AssemblyName System.IO.Compression.FileSystem;" ^
-  "[IO.Compression.ZipFile]::ExtractToDirectory('%ZIP%','%BIN%', $true);" ^
+  "if (Get-Command 'tar' -ErrorAction SilentlyContinue) { tar -xzf '%ZIP%' -C '%BIN%'; } else { Add-Type -AssemblyName System.IO.Compression.FileSystem; $temp = '%BIN%\temp'; New-Item -ItemType Directory -Path $temp -Force | Out-Null; [IO.Compression.ZipFile]::ExtractToDirectory('%ZIP%', $temp); Move-Item '$temp\*' '%BIN%\' -Force; Remove-Item $temp -Recurse -Force; };" ^
   "Remove-Item '%ZIP%';" ^
   "$exe = Get-ChildItem '%BIN%' -Filter '*ghost*.exe' | Select-Object -First 1;" ^
   "Move-Item -Force $exe.FullName (Join-Path '%BIN%' 'ghost.exe');" ^
