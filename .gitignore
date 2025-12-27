@@ -19,3 +19,6 @@ Session.vim
 opencode.json
 a.out
 target
+install.ps1
+install.sh
+installer/

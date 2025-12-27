@@ -1,0 +1,82 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build-and-package:
+    name: Build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun + deps
+        uses: ./.github/actions/setup-bun
+
+      - name: Build host binaries
+        run: |
+          cd packages/opencode
+          bun run ./script/build.ts --single
+
+      - name: Package artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd packages/opencode
+          mkdir -p artifacts tmp-bin
+
+          shopt -s nullglob
+          for dir in dist/ghost-in-the-shell-*; do
+            osarch="${dir##dist/ghost-in-the-shell-}"
+            ext=""
+            if [[ "$osarch" == windows-* ]]; then
+              ext=".exe"
+            fi
+
+            src="$dir/bin/shellghost$ext"
+            if [[ ! -f "$src" ]]; then
+              echo "Missing binary at $src" >&2
+              exit 1
+            fi
+
+            cp "$src" "tmp-bin/ghost$ext"
+            tar -czf "artifacts/ghost-in-the-shell-${osarch}.tar.gz" -C tmp-bin "ghost$ext"
+            rm -f "tmp-bin/ghost$ext"
+          done
+
+          ls -l artifacts
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ matrix.os }}
+          path: packages/opencode/artifacts/ghost-in-the-shell-*.tar.gz
+
+  publish:
+    name: Publish Release
+    needs: build-and-package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Gather tarballs
+        run: |
+          mkdir -p dist
+          find artifacts -name "ghost-in-the-shell-*.tar.gz" -exec mv {} dist/ \;
+          ls -l dist
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/ghost-in-the-shell-*.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

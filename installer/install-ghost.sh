@@ -5,9 +5,9 @@ set -euo pipefail
 VERSION="${VERSION:-latest}"
 REPO_OVERRIDE="${REPO_OVERRIDE:-}"
 REPO_CANDIDATES=(
+  "GhostEnvoy/Shell-Ghost"
   "Balanced-Libra/Shell-Ghost"
   "Balanced-Libra/GhostShell"
-  "GhostEnvoy/Shell-Ghost"
 )
 
 if [[ -n "$REPO_OVERRIDE" ]]; then
@@ -48,24 +48,27 @@ resolved="$(resolve_repo)"
 REPO="${resolved%%|*}"
 TAG="${resolved##*|}"
 
-asset_base="ghost-in-the-shell-${target}"
-ASSET_CANDIDATES=(
-  "${asset_base}.tar.gz"
-  "${asset_base}-baseline.tar.gz"
-  "${asset_base}-musl.tar.gz"
+asset_bases=(
+  "ghost-in-the-shell-${target}"
+  "ghost-${target}"
+  "shellghost-${target}"
 )
+asset_suffixes=("" "-baseline" "-musl")
 
 BASE_DIR="${HOME}/.ghost"
 BIN_DIR="${BASE_DIR}/bin"
 mkdir -p "${BIN_DIR}"
 
 found_asset=""
-for asset in "${ASSET_CANDIDATES[@]}"; do
-  url="https://github.com/${REPO}/releases/download/${TAG}/${asset}"
-  if curl -fsI "$url" >/dev/null 2>&1; then
-    found_asset="$asset"
-    break
-  fi
+for base in "${asset_bases[@]}"; do
+  for suffix in "${asset_suffixes[@]}"; do
+    asset="${base}${suffix}.tar.gz"
+    url="https://github.com/${REPO}/releases/download/${TAG}/${asset}"
+    if curl -fsI "$url" >/dev/null 2>&1; then
+      found_asset="$asset"
+      break 2
+    fi
+  done
 done
 
 if [[ -z "$found_asset" ]]; then
@@ -80,7 +83,7 @@ tar -xzf "${BIN_DIR}/ghost.tar.gz" -C "${BIN_DIR}"
 rm -f "${BIN_DIR}/ghost.tar.gz"
 
 # Find binary (shellghost or ghost) and place on PATH
-exe_path="$(find "${BIN_DIR}" -maxdepth 3 -type f \( -name 'shellghost' -o -name 'ghost' -o -name 'ghost.exe' \) | head -n 1)"
+exe_path="$(find "${BIN_DIR}" -maxdepth 3 -type f \( -name 'ghost' -o -name 'ghost.exe' -o -name 'shellghost' \) | head -n 1)"
 if [[ -z "$exe_path" ]]; then
   echo "Could not find extracted binary in ${BIN_DIR}" >&2
   exit 1

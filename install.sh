@@ -43,7 +43,8 @@ TMP_DIR="$(mktemp -d)"
 cleanup() { rm -rf "${TMP_DIR}"; }
 trap cleanup EXIT
 
-ASSET="ghost-in-the-shell-${OS}-${ARCH}.tar.gz"
+ASSET_BASES=("ghost-in-the-shell-${OS}-${ARCH}" "ghost-${OS}-${ARCH}" "shellghost-${OS}-${ARCH}")
+ASSET_SUFFIXES=("" "-baseline" "-musl")
 
 API_URL="https://api.github.com/repos/${REPO}/releases/latest"
 
@@ -56,11 +57,23 @@ else
   exit 1
 fi
 
-DOWNLOAD_URL="$(printf '%s' "${JSON}" | tr -d '\n' | sed 's/\\"/"/g' | grep -o "https://github.com/${REPO}/releases/download/[^\"]*${ASSET}" | head -n 1)"
+ASSET=""
+DOWNLOAD_URL=""
+for base in "${ASSET_BASES[@]}"; do
+  for suffix in "${ASSET_SUFFIXES[@]}"; do
+    candidate="${base}${suffix}.tar.gz"
+    url="$(printf '%s' "${JSON}" | tr -d '\n' | sed 's/\\"/"/g' | grep -o "https://github.com/${REPO}/releases/download/[^\"]*${candidate}" | head -n 1)"
+    if [ -n "${url}" ]; then
+      ASSET="${candidate}"
+      DOWNLOAD_URL="${url}"
+      break 2
+    fi
+  done
+done
 
 if [ -z "${DOWNLOAD_URL}" ]; then
-  echo "Could not find release asset: ${ASSET}" >&2
-  echo "Make sure a GitHub Release exists with that asset name." >&2
+  echo "Could not find a compatible asset for ${OS}/${ARCH} in ${REPO}." >&2
+  echo "Looked for bases: ${ASSET_BASES[*]} with suffixes: ${ASSET_SUFFIXES[*]}" >&2
   exit 1
 fi
 
@@ -72,11 +85,12 @@ else
   wget -qO "${ARCHIVE_PATH}" "${DOWNLOAD_URL}"
 fi
 
-BIN_PATH="${TMP_DIR}/bin/shellghost"
 tar -xzf "${ARCHIVE_PATH}" -C "${TMP_DIR}"
 
+BIN_PATH="$(find "${TMP_DIR}" -maxdepth 3 -type f \( -name 'ghost' -o -name 'ghost.exe' -o -name 'shellghost' \) | head -n 1)"
+
 if [ ! -f "${BIN_PATH}" ]; then
-  echo "Downloaded archive did not contain expected binary 'shellghost'" >&2
+  echo "Downloaded archive did not contain expected binary (ghost/shellghost)" >&2
   exit 1
 fi
 
