@@ -89,6 +89,5 @@
     "@types/node": "catalog:"
   },
   "patchedDependencies": {
-    "ghostty-web@0.3.0": "patches/ghostty-web@0.3.0.patch"
   }
 }
