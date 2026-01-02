@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/Balanced-Libra/Shell-Ghost">
+  <a href="https://github.com/GhostEnvoy/Shell-Ghost">
     <picture>
       <img src="packages/opencode/src/cli/cmd/tui/component/logo.tsx" alt="ShellGhost logo">
     </picture>
@@ -7,8 +7,8 @@
 </p>
 <p align="center">ShellGhost - The open source AI coding agent.</p>
 <p align="center">
-  <a href="https://github.com/Balanced-Libra/Shell-Ghost"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Balanced-Libra/Shell-Ghost?style=flat-square" /></a>
-  <a href="https://github.com/Balanced-Libra/Shell-Ghost/actions"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/Balanced-Libra/Shell-Ghost/publish.yml?style=flat-square&branch=main" /></a>
+  <a href="https://github.com/GhostEnvoy/Shell-Ghost"><img alt="GitHub stars" src="https://img.shields.io/github/stars/GhostEnvoy/Shell-Ghost?style=flat-square" /></a>
+  <a href="https://github.com/GhostEnvoy/Shell-Ghost/actions"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/GhostEnvoy/Shell-Ghost/publish.yml?style=flat-square&branch=main" /></a>
 </p>
 
 
@@ -18,16 +18,16 @@
 
 ```bash
 # Build from source
-git clone https://github.com/Balanced-Libra/Shell-Ghost.git
+git clone https://github.com/GhostEnvoy/Shell-Ghost.git
 cd Shell-Ghost/packages/opencode
 bun install
 bun run build
 
 # Install prebuilt (macOS/Linux)
-curl -fsSL https://raw.githubusercontent.com/Balanced-Libra/Shell-Ghost/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/GhostEnvoy/Shell-Ghost/main/install.sh | bash
 
 # Install prebuilt (Windows PowerShell)
-powershell -NoProfile -ExecutionPolicy Bypass -Command "iwr -useb https://raw.githubusercontent.com/Balanced-Libra/Shell-Ghost/main/install.ps1 | iex"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "iwr -useb https://raw.githubusercontent.com/GhostEnvoy/Shell-Ghost/main/install.ps1 | iex"
 
 # Package managers (community maintained)
 npm i -g ghost-in-the-shell@latest        # or bun/pnpm/yarn
@@ -35,8 +35,8 @@ scoop bucket add extras; scoop install extras/ghost  # Windows
 choco install ghost             # Windows
 brew install ghost              # macOS and Linux
 paru -S ghost-bin               # Arch Linux
-mise use -g ubi:Balanced-Libra/GhostShell # Any OS
-nix run nixpkgs#ghost           # or github:Balanced-Libra/GhostShell for latest dev branch
+mise use -g ubi:GhostEnvoy/GhostShell # Any OS
+nix run nixpkgs#ghost           # or github:GhostEnvoy/GhostShell for latest dev branch
 ```
 
 > [!TIP]
@@ -53,8 +53,8 @@ The install script respects the following priority order for the installation pa
 
 ```bash
 # Examples
-GHOST_INSTALL_DIR=/usr/local/bin curl -fsSL https://raw.githubusercontent.com/Balanced-Libra/Shell-Ghost/main/install.sh | bash
-XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://raw.githubusercontent.com/Balanced-Libra/Shell-Ghost/main/install.sh | bash
+GHOST_INSTALL_DIR=/usr/local/bin curl -fsSL https://raw.githubusercontent.com/GhostEnvoy/Shell-Ghost/main/install.sh | bash
+XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://raw.githubusercontent.com/GhostEnvoy/Shell-Ghost/main/install.sh | bash
 ```
 
 ### Agents
@@ -63,7 +63,7 @@ ShellGhost includes three built-in agents you can switch between,
 you can switch between these using the `Tab` key.
 
 - **build** - Default, full access agent for development work
-- **plan** - Read-only agent for analysis and code exploration
+- **ask** - Read-only agent for analysis and code exploration
   - Denies file edits by default
   - Asks permission before running bash commands
   - Ideal for exploring unfamiliar codebases or planning changes
@@ -75,11 +75,11 @@ you can switch between these using the `Tab` key.
 Also, included is a **general** subagent for complex searches and multi-step tasks.
 This is used internally and can be invoked using `@general` in messages.
 
-Learn more about [agents](https://github.com/Balanced-Libra/Shell-Ghost/docs/agents).
+Learn more about [agents](https://github.com/GhostEnvoy/Shell-Ghost/docs/agents).
 
 ### Documentation
 
-For more info on how to configure ShellGhost [**head over to our docs**](https://github.com/Balanced-Libra/Shell-Ghost/docs).
+For more info on how to configure ShellGhost [**head over to our docs**](https://github.com/GhostEnvoy/Shell-Ghost/docs).
 
 ### Contributing
 
@@ -104,4 +104,4 @@ It's very similar to Claude Code in terms of capability. Here are the key differ
 
 ---
 
-**Join our community** [GitHub](https://github.com/Balanced-Libra/Shell-Ghost) | [Issues](https://github.com/Balanced-Libra/Shell-Ghost/issues)
+**Join our community** [GitHub](https://github.com/GhostEnvoy/Shell-Ghost) | [Issues](https://github.com/GhostEnvoy/Shell-Ghost/issues)
