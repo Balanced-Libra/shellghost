@@ -78,7 +78,7 @@ const allTargets: {
 ]
 
 const targets = singleFlag
-  ? allTargets.filter((item) => item.os === "linux" process.platform && item.arch === process.archprocess.platform && item.arch === process.arch item.arch === "x64")
+  ? allTargets.filter((item) => item.os === process.platform && item.arch === process.arch)
   : allTargets
 
 await $`rm -rf dist`
