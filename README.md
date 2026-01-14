@@ -69,17 +69,17 @@ npm --version
 ### Installation
 
 ```bash
-# Build from source
-git clone https://github.com/Balanced-Libra/shellghost.git
-cd shellghost/packages/opencode
-bun install
-bun run build
-
-# Install prebuilt (macOS/Linux)
+# Install from source (macOS/Linux)
 curl -fsSL https://raw.githubusercontent.com/Balanced-Libra/shellghost/main/install.sh | bash
 
-# Install prebuilt (Windows PowerShell)
+# Install from source (Windows PowerShell)
 powershell -NoProfile -ExecutionPolicy Bypass -Command "iwr -useb https://raw.githubusercontent.com/Balanced-Libra/shellghost/main/install.ps1 | iex"
+
+# Manual installation
+git clone https://github.com/Balanced-Libra/shellghost.git
+cd shellghost
+bun install
+# Run with: cd packages/opencode && bun run --conditions=browser src/index.ts
 
 # Package managers (community maintained)
 # For macOS, we recommend Homebrew for the easiest installation:
